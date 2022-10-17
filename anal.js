@@ -103,7 +103,7 @@ function setSessionInfo(user_info){
     var session_id = user_info.client_id + "_" + Date.now()
     var session_info = {
       session_id: session_id,
-      total_sessions = 0,
+      total_sessions: 0,
       session_source: document.referrer || window.location.protocol + "//" + window.location.host
     }
     sessionStorage.setItem("session_info", JSON.stringify(session_info));
