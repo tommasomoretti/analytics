@@ -82,6 +82,7 @@ function setUserInfo(){
     var client_id = Math.floor(Math.random() * Math.pow(10, 10));
     var user_info = {
       client_id: client_id,
+      total_sessions: 0,
       user_source: document.referrer || window.location.protocol + "//" + window.location.host
     }
     localStorage.setItem("user_info", JSON.stringify(user_info));
