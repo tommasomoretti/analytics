@@ -77,8 +77,8 @@ function detectOS(){
 function setUserInfo(){
   info = [];
   if (localStorage.getItem("user_info") === null){
-    sessionStorage.removeItem(session_info);
-    sessionStorage.removeItem(event_info);
+    sessionStorage.removeItem('session_info');
+    sessionStorage.removeItem('event_info');
     var client_id = Math.floor(Math.random() * Math.pow(10, 10));
     var user_info = {
       client_id: client_id,
@@ -102,7 +102,7 @@ function setUserInfo(){
 // Session data
 function setSessionInfo(user_info){
   if (sessionStorage.getItem("session_info") === null){
-    sessionStorage.removeItem(event_info);
+    sessionStorage.removeItem('event_info');
     var session_id = user_info.client_id + "_" + Date.now()
     var session_info = {
       session_id: session_id,
