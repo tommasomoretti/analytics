@@ -1,6 +1,6 @@
 # TO DO:
 
-## Finire conteggio eventi localStorage
+## Add event number
 💩
 
 ## Timing data su page_info
