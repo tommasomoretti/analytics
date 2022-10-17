@@ -3,7 +3,7 @@
 ## Finire conteggio eventi localStorage
 💩
 
-## Timing data
+## Timing data su page_info
 Time to DOM Interactive
 <pre><code>console.log(performance.timing.responseStart)</pre></code>
 
@@ -22,10 +22,10 @@ Event listener
 })</pre></code>
 
 
-## Session start
+## Session start event
 Quando crea il sessionStorage con i dati della sessione
 
-## Session end
+## Session end event
 Event listener
 <pre><code>window.addEventListener('beforeunload', (event) => {
   // Send timing data
