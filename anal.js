@@ -81,8 +81,8 @@ function setUserInfo(){
     var client_id = Math.floor(Math.random() * Math.pow(10, 10));
     var user_info = {
       client_id: client_id,
-      total_sessions: 0,
-      user_source: document.referrer || window.location.protocol + "//" + window.location.host
+      user_source: document.referrer || window.location.protocol + "//" + window.location.host,
+      total_sessions: 0
     }
     localStorage.setItem("user_info", JSON.stringify(user_info));
     setSessionInfo(user_info);
@@ -90,7 +90,8 @@ function setUserInfo(){
     info.push(JSON.parse(sessionStorage.getItem("session_info")));
     return info
   } else {
-    setSessionInfo(JSON.parse(localStorage.getItem("user_info")));
+    var user_info = JSON.parse(localStorage.getItem("user_info"))
+    setSessionInfo(user_info);
     info.push(JSON.parse(localStorage.getItem("user_info")));
     info.push(JSON.parse(sessionStorage.getItem("session_info")));
     return info
@@ -103,21 +104,16 @@ function setSessionInfo(user_info){
     var session_id = user_info.client_id + "_" + Date.now()
     var session_info = {
       session_id: session_id,
-      total_requests: 0,
-      session_source: document.referrer || window.location.protocol + "//" + window.location.host
+      session_source: document.referrer || window.location.protocol + "//" + window.location.host,
+      total_requests: 0
     }
     sessionStorage.setItem("session_info", JSON.stringify(session_info));
     user_info.total_sessions = user_info.total_sessions + 1
     localStorage.setItem("user_info", JSON.stringify(user_info));
-    increaseRequestNumber(JSON.parse(sessionStorage.getItem("session_info")));
-  } else {
-    session_info = JSON.parse(sessionStorage.getItem("session_info"));
-    session_info.total_requests = session_info.total_requests + 1
-    sessionStorage.setItem("session_info", JSON.stringify(session_info));
   }
 }
 
-// Event info
+// Event data
 function setRequestInfo(full_endpoint, payload, tracker){
   var actual_event_info = JSON.parse(sessionStorage.getItem("event_info"));
   var event_sent = {
@@ -129,6 +125,9 @@ function setRequestInfo(full_endpoint, payload, tracker){
     event_info[tracker] = [];
     event_info[tracker].push(event_sent);
     sessionStorage.setItem("event_info", JSON.stringify(event_info));
+    var session_storage = JSON.parse(sessionStorage.getItem("session_info"));
+    session_storage.total_requests = session_storage.total_requests + 1 
+    sessionStorage.setItem("session_info", JSON.stringify(session_info));
   } else {
     if(actual_event_info[tracker] == undefined){
         actual_event_info[tracker] = []
@@ -137,5 +136,8 @@ function setRequestInfo(full_endpoint, payload, tracker){
         actual_event_info[tracker].push(event_sent);
     }
     sessionStorage.setItem("event_info", JSON.stringify(actual_event_info));
+    var session_storage = JSON.parse(sessionStorage.getItem("session_info"));
+    session_storage.total_requests = session_storage.total_requests + 1 
+    sessionStorage.setItem("session_info", JSON.stringify(session_info));
   }
 }
