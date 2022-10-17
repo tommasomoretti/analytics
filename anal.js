@@ -79,6 +79,7 @@ function detectOS(){
 function setUserInfo(){
   info = [];
   if (localStorage.getItem("user_info") === null){
+    sessionStorage.clear();
     var client_id = Math.floor(Math.random() * Math.pow(10, 10));
     var user_info = {
       client_id: client_id,
