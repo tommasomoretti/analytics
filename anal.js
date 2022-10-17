@@ -1,9 +1,10 @@
+// Send hits
+
 function sendData(full_endpoint, secret_key, payload, data) {
   payload.user_agent = navigator.userAgent;
   payload.browser = detectBrowser();
   payload.device = detectDevice();
   payload.platform = detectOS();
-
 
   fetch(full_endpoint, {
     // headers: new Headers({
@@ -67,6 +68,10 @@ function detectOS(){
 }
 
 
+---
+  
+// User data  
+
 function setUserInfo(){
   info = [];
   if (localStorage.getItem("user_info") === null){
@@ -104,6 +109,9 @@ function setSessionInfo(user_info){
   } else {
     increaseRequestNumber(JSON.parse(sessionStorage.getItem("session_info")));
   }
+}
+
+function setRequestInfo(){
 }
 
 
