@@ -5,6 +5,9 @@ function sendData(full_endpoint, secret_key, payload, tracker, data) {
   payload.browser = detectBrowser();
   payload.device = detectDevice();
   payload.platform = detectOS();
+  
+  if(data.enable_logs){console.log('👉 Request payload: ', payload);}
+  if(data.enable_logs){console.log('🟢 Analytics consent granted. Sending request...');}
 
   fetch(full_endpoint, {
     // headers: new Headers({
@@ -19,13 +22,13 @@ function sendData(full_endpoint, secret_key, payload, tracker, data) {
   .then((response) => response.json())
   .then((response_json) => {
     setRequestInfo(full_endpoint, payload, tracker);
-    console.log(response_json.response);
+    if(data.enable_logs){console.log(response_json.response)}
     if (response_json.status_code === 200)
       return data.gtmOnSuccess()
     else return data.gtmOnFailure()
   })
   .catch((error) => {
-    console.log(error)
+    if(data.enable_logs){console.log(log(error)}
     return data.gtmOnFailure()
   })
 }
