@@ -125,8 +125,8 @@ function setRequestInfo(full_endpoint, payload, tracker){
     event_info[tracker] = [];
     event_info[tracker].push(event_sent);
     sessionStorage.setItem("event_info", JSON.stringify(event_info));
-    var session_storage = JSON.parse(sessionStorage.getItem("session_info"));
-    session_storage.total_requests = session_storage.total_requests + 1 
+    var session_info = JSON.parse(sessionStorage.getItem("session_info"));
+    session_info.total_requests = session_info.total_requests + 1 
     sessionStorage.setItem("session_info", JSON.stringify(session_info));
   } else {
     if(actual_event_info[tracker] == undefined){
@@ -136,8 +136,8 @@ function setRequestInfo(full_endpoint, payload, tracker){
         actual_event_info[tracker].push(event_sent);
     }
     sessionStorage.setItem("event_info", JSON.stringify(actual_event_info));
-    var session_storage = JSON.parse(sessionStorage.getItem("session_info"));
-    session_storage.total_requests = session_storage.total_requests + 1 
+    var session_info = JSON.parse(sessionStorage.getItem("session_info"));
+    session_info.total_requests = session_info.total_requests + 1 
     sessionStorage.setItem("session_info", JSON.stringify(session_info));
   }
 }
