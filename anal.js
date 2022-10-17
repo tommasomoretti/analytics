@@ -74,8 +74,7 @@ function detectOS(){
 
 // --------------------------------------------------------------------------------------------------------------------------------------------------------
   
-// User data  
-
+// User data
 function setUserInfo(){
   info = [];
   if (localStorage.getItem("user_info") === null){
@@ -101,7 +100,7 @@ function setUserInfo(){
 
 // Session data
 function setSessionInfo(user_info){
-  if (localStorage.getItem("user_info") != null && sessionStorage.getItem("session_info") === null){
+  if (sessionStorage.getItem("session_info") === null){
     var session_id = user_info.client_id + "_" + Date.now()
     var session_info = {
       session_id: session_id,
@@ -109,24 +108,14 @@ function setSessionInfo(user_info){
       session_source: document.referrer || window.location.protocol + "//" + window.location.host
     }
     sessionStorage.setItem("session_info", JSON.stringify(session_info));
-    increaseSessionNumber(user_info);
+    user_info.total_sessions = user_info.total_sessions + 1
+    localStorage.setItem("user_info", JSON.stringify(user_info));
     increaseRequestNumber(JSON.parse(sessionStorage.getItem("session_info")));
   } else {
-    increaseRequestNumber(JSON.parse(sessionStorage.getItem("session_info")));
+    session_info = JSON.parse(sessionStorage.getItem("session_info"));
+    session_info.total_requests = session_info.total_requests + 1
+    sessionStorage.setItem("session_info", JSON.stringify(session_info));
   }
-}
-
-function increaseSessionNumber(user_info){
-  var actual_session_number = user_info.total_sessions
-  user_info.total_sessions = actual_session_number + 1
-  localStorage.setItem("user_info", JSON.stringify(user_info));
-}
-
-
-function increaseRequestNumber(session_info){
-  var actual_request_number = session_info.total_requests
-  session_info.total_requests = actual_request_number + 1
-  sessionStorage.setItem("session_info", JSON.stringify(session_info));
 }
 
 // Event info
