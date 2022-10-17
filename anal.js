@@ -28,7 +28,7 @@ function sendData(full_endpoint, secret_key, payload, tracker, data) {
     else return data.gtmOnFailure()
   })
   .catch((error) => {
-    if(data.enable_logs){console.log(log(error)}
+    if(data.enable_logs){console.log(error)}
     return data.gtmOnFailure()
   })
 }
