@@ -1,6 +1,6 @@
 // Send hits
 
-function sendData(full_endpoint, secret_key, payload, data) {
+function sendData(full_endpoint, secret_key, payload, tracker, data) {
   payload.user_agent = navigator.userAgent;
   payload.browser = detectBrowser();
   payload.device = detectDevice();
@@ -18,6 +18,7 @@ function sendData(full_endpoint, secret_key, payload, data) {
   })
   .then((response) => response.json())
   .then((response_json) => {
+    setRequestInfo(full_endpoint, payload, tracker);
     console.log(response_json.response);
     if (response_json.status_code === 200)
       return data.gtmOnSuccess()
@@ -68,7 +69,7 @@ function detectOS(){
 }
 
 
----
+// --------------------------------------------------------------------------------------------------------------------------------------------------------
   
 // User data  
 
@@ -94,7 +95,7 @@ function setUserInfo(){
   }
 }
 
-
+// Session data
 function setSessionInfo(user_info){
   if (localStorage.getItem("user_info") != null && sessionStorage.getItem("session_info") === null){
     var session_id = user_info.client_id + "_" + Date.now()
@@ -111,10 +112,6 @@ function setSessionInfo(user_info){
   }
 }
 
-function setRequestInfo(){
-}
-
-
 function increaseSessionNumber(user_info){
   var actual_session_number = user_info.total_sessions
   user_info.total_sessions = actual_session_number + 1
@@ -126,4 +123,27 @@ function increaseRequestNumber(session_info){
   var actual_request_number = session_info.total_requests
   session_info.total_requests = actual_request_number + 1
   sessionStorage.setItem("session_info", JSON.stringify(session_info));
+}
+
+// Event info
+function setRequestInfo(full_endpoint, payload, tracker){
+  var actual_event_info = JSON.parse(sessionStorage.getItem("event_info"));
+  var event_sent = {
+    endpoint_name: full_endpoint,
+    event_info: payload
+  }
+  if (actual_event_info == null){
+    var event_info = {}
+    event_info[tracker] = [];
+    event_info[tracker].push(event_sent);
+    sessionStorage.setItem("event_info", JSON.stringify(event_info));
+  } else {
+    if(actual_event_info[tracker] == undefined){
+        actual_event_info[tracker] = []
+        actual_event_info[tracker].push(event_sent) 
+    } else {
+        actual_event_info[tracker].push(event_sent);
+    }
+    sessionStorage.setItem("event_info", JSON.stringify(actual_event_info));
+  }
 }
