@@ -79,7 +79,6 @@ function setUserInfo(){
     var client_id = Math.floor(Math.random() * Math.pow(10, 10));
     var user_info = {
       client_id: client_id,
-      total_sessions: 0,
       user_source: document.referrer || window.location.protocol + "//" + window.location.host
     }
     localStorage.setItem("user_info", JSON.stringify(user_info));
@@ -101,7 +100,6 @@ function setSessionInfo(user_info){
     var session_id = user_info.client_id + "_" + Date.now()
     var session_info = {
       session_id: session_id,
-      total_requests: 0,
       session_source: document.referrer || window.location.protocol + "//" + window.location.host
     }
     sessionStorage.setItem("session_info", JSON.stringify(session_info));
