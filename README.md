@@ -1,27 +1,32 @@
 # TO DO:
 
+## Finire conteggio eventi localStorage
+💩
+
 ## Timing data
 Time to DOM Interactive
-console.log(performance.timing.responseStart)
+<pre><code>console.log(performance.timing.responseStart)</pre></code>
 
 Time to DOM Complete
-console.log(performance.timing.responseStart)
+<pre><code>console.log(performance.timing.responseStart)</pre></code>
 
 Page Render Time
-console.log(performance.timing.domLoading)
+<pre><code>console.log(performance.timing.domLoading)</pre></code>
 
 Total Page Load Time
-console.log(performance.timing.navigationStart)
+<pre><code>console.log(performance.timing.navigationStart)</pre></code>
 
-window.addEventListener('DOMContentLoaded', (event) => {
+Event listener
+<pre><code>window.addEventListener('DOMContentLoaded', (event) => {
   // Send timing data
-})
+})</pre></code>
 
 
 ## Session start
 Quando crea il sessionStorage con i dati della sessione
 
-Session end
-window.addEventListener('beforeunload', (event) => {
+## Session end
+Event listener
+<pre><code>window.addEventListener('beforeunload', (event) => {
   // Send timing data
-})
+})</pre></code>
