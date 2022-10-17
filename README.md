@@ -1,13 +1,16 @@
-// TO DO:
+# TO DO:
 
-// Timing data
-// Time to DOM Interactive
+## Timing data
+Time to DOM Interactive
 console.log(performance.timing.responseStart)
-// Time to DOM Complete
+
+Time to DOM Complete
 console.log(performance.timing.responseStart)
-// Page Render Time
+
+Page Render Time
 console.log(performance.timing.domLoading)
-// Total Page Load Time
+
+Total Page Load Time
 console.log(performance.timing.navigationStart)
 
 window.addEventListener('DOMContentLoaded', (event) => {
@@ -15,10 +18,10 @@ window.addEventListener('DOMContentLoaded', (event) => {
 })
 
 
-// Session start
-// Quando crea il sessionStorage con i dati della sessione
+## Session start
+Quando crea il sessionStorage con i dati della sessione
 
-// Session end
+Session end
 window.addEventListener('beforeunload', (event) => {
   // Send timing data
 })
