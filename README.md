@@ -1,8 +1,5 @@
 # TO DO:
 
-## Add event number
-💩
-
 ## Timing data su page_info
 Time to DOM Interactive
 <pre><code>console.log(performance.timing.responseStart)</pre></code>
