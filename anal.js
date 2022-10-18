@@ -76,6 +76,9 @@ function addSessionEndListener(full_endpoint, secret_key, data){
     // payload.browser = detectBrowser();
     // payload.browser_language = navigator.language; 
     // payload.device = detectDevice();
+    
+    console.log(full_endpoint);
+    console.log(payload);
         
     fetch(full_endpoint, {
       // headers: new Headers({
