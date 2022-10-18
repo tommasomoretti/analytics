@@ -71,35 +71,34 @@ function addSessionEndListener(full_endpoint, secret_key, data){
     b: "abcd"
   }
   
-  // console.log(full_endpoint);
-  // console.log(payload);
-    
-  window.addEventListener("beforeunload", (full_endpoint, payload) => {
+  var eventHandler = (full_endpoint, payload) => {
     // payload.user_agent = navigator.userAgent;
     // payload.browser = detectBrowser();
     // payload.browser_language = navigator.language; 
     // payload.device = detectDevice();
-    
+      
     console.log(full_endpoint);
     console.log(payload);
-    
+      
     fetch(full_endpoint, {
       // headers: new Headers({
       //   'Authorization': 'Bearer ' + btoa('secret_key'),
       //   'Content-Type': 'application/json'
       // }),
-      method: 'POST',
+      method: 'POST',
       credentials: 'include',
       mode: 'cors',
       body: JSON.stringify(payload)
     })
     .then(() => {
-        console.log("Unloaded")
+      console.log("Unloaded")
     })
     .catch((error) => {
       console.log(error)
     })
-  })
+  }
+    
+  window.addEventListener("beforeunload", eventHandler(full_endpoint, payload), true)
   return true
 }
 
