@@ -65,21 +65,24 @@ function detectDevice(){
 
 
 // Add event listener for session end
-function addSessionEndListener(full_endpoint, secret_key, data){
-  console.log(full_endpoint);
-  console.log(payload);
-  
+function addSessionEndListener(full_endpoint, secret_key, data){  
   var payload = {
     a: 1234,
     b: "abcd"
   }
+  
+  // console.log(full_endpoint);
+  // console.log(payload);
     
   window.addEventListener("beforeunload", (full_endpoint, payload) => {
     // payload.user_agent = navigator.userAgent;
     // payload.browser = detectBrowser();
     // payload.browser_language = navigator.language; 
     // payload.device = detectDevice();
-        
+    
+    console.log(full_endpoint);
+    console.log(payload);
+    
     fetch(full_endpoint, {
       // headers: new Headers({
       //   'Authorization': 'Bearer ' + btoa('secret_key'),
