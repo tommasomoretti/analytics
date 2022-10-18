@@ -116,8 +116,8 @@ function setSessionInfo(user_info){
 }
 
 // Event data
-function updateSessionInfo(full_endpoint, payload, tracker){
+function updateSessionInfo(full_endpoint, payload, tracker){  
   var actual_session_info = JSON.parse(sessionStorage.getItem("session_info"));
   actual_session_info.total_requests = actual_session_info.total_requests + 1 
   sessionStorage.setItem("session_info", JSON.stringify(actual_session_info));
-  }
+}
