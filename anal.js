@@ -66,6 +66,9 @@ function detectDevice(){
 
 // Add event listener for session end
 function addSessionEndListener(full_endpoint, secret_key, data){
+  console.log(full_endpoint);
+  console.log(payload);
+  
   var payload = {
     a: 1234,
     b: "abcd"
@@ -76,9 +79,6 @@ function addSessionEndListener(full_endpoint, secret_key, data){
     // payload.browser = detectBrowser();
     // payload.browser_language = navigator.language; 
     // payload.device = detectDevice();
-    
-    console.log(full_endpoint);
-    console.log(payload);
         
     fetch(full_endpoint, {
       // headers: new Headers({
