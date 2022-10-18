@@ -74,6 +74,7 @@ function addSessionEndListener(full_endpoint, secret_key, data){
   window.addEventListener("beforeunload", function sessionEnd(){
     console.log(full_endpoint, secret_key, payload, data)
   })
+  return true
 }
 
 
