@@ -84,6 +84,7 @@ function setUserInfo(){
     var user_info = {
       client_id: client_id,
       user_source: document.referrer || window.location.protocol + "//" + window.location.host,
+      usert_timestamp: Date.now(),
       total_sessions: 0
     }
     localStorage.setItem("user_info", JSON.stringify(user_info));
@@ -108,6 +109,7 @@ function setSessionInfo(user_info){
     var session_info = {
       session_id: session_id,
       session_source: document.referrer || window.location.protocol + "//" + window.location.host,
+      session_timestamp: Date.now(),
       total_requests: 0
     }
     sessionStorage.setItem("session_info", JSON.stringify(session_info));
