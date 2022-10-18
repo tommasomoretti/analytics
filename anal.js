@@ -68,10 +68,15 @@ function detectDevice(){
 function sessionEndListener(full_endpoint, secret_key, data){
   if(getEventListeners(window).beforeunload.find(e => e.listener.name == 'sessionEnd')){
     console.log("Listener già presente")
-  } else {  
+  } else {
+    var payload = {
+      a: 1234,
+      b: "abcd"
+    }  
     window.addEventListener("beforeunload", function sessionEnd() {
       console.log(full_endpoint + secret_key + payload + data)
     })
+    console.log("Listner aggiunto")
   }
 }
 
