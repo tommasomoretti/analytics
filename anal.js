@@ -72,10 +72,10 @@ function addSessionEndListener(full_endpoint, secret_key, data){
   }
     
   window.addEventListener("beforeunload", (full_endpoint, payload) => {
-    payload.user_agent = navigator.userAgent;
-    payload.browser = detectBrowser();
-    payload.browser_language = navigator.language; 
-    payload.device = detectDevice();
+    // payload.user_agent = navigator.userAgent;
+    // payload.browser = detectBrowser();
+    // payload.browser_language = navigator.language; 
+    // payload.device = detectDevice();
         
     fetch(full_endpoint, {
       // headers: new Headers({
