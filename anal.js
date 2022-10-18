@@ -121,4 +121,3 @@ function updateSessionInfo(full_endpoint, payload, tracker){
   actual_session_info.total_requests = actual_session_info.total_requests + 1 
   sessionStorage.setItem("session_info", JSON.stringify(actual_session_info));
   }
-}
