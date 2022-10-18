@@ -21,7 +21,7 @@ function sendData(full_endpoint, secret_key, payload, tracker, data) {
   })
   .then((response) => response.json())
   .then((response_json) => {
-    setRequestInfo(full_endpoint, payload, tracker);
+    updateSessionInfo(full_endpoint, payload, tracker);
     if(data.enable_logs){console.log(response_json.response)}
     if (response_json.status_code === 200)
       return data.gtmOnSuccess()
@@ -116,30 +116,9 @@ function setSessionInfo(user_info){
 }
 
 // Event data
-function setRequestInfo(full_endpoint, payload, tracker){
-  var actual_event_info = JSON.parse(sessionStorage.getItem("event_info"));
-  var event_sent = {
-    endpoint_name: full_endpoint,
-    event_info: payload
-  }
-  if (actual_event_info == null){
-    var event_info = {}
-    event_info[tracker] = [];
-    event_info[tracker].push(event_sent);
-    sessionStorage.setItem("event_info", JSON.stringify(event_info));
-    var session_info = JSON.parse(sessionStorage.getItem("session_info"));
-    session_info.total_requests = session_info.total_requests + 1 
-    sessionStorage.setItem("session_info", JSON.stringify(session_info));
-  } else {
-    if(actual_event_info[tracker] == undefined){
-        actual_event_info[tracker] = []
-        actual_event_info[tracker].push(event_sent) 
-    } else {
-        actual_event_info[tracker].push(event_sent);
-    }
-    sessionStorage.setItem("event_info", JSON.stringify(actual_event_info));
-    var session_info = JSON.parse(sessionStorage.getItem("session_info"));
-    session_info.total_requests = session_info.total_requests + 1 
-    sessionStorage.setItem("session_info", JSON.stringify(session_info));
+function updateSessionInfo(full_endpoint, payload, tracker){
+  var actual_session_info = JSON.parse(sessionStorage.getItem("session_info"));
+  actual_session_info.total_requests = actual_session_info.total_requests + 1 
+  sessionStorage.setItem("session_info", JSON.stringify(actual_session_info));
   }
 }
