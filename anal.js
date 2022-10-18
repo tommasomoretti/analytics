@@ -1,6 +1,5 @@
 // Send hits
-
-function sendData(full_endpoint, secret_key, payload, tracker, data) {
+function sendData(full_endpoint, secret_key, payload, data) {
   payload.user_agent = navigator.userAgent;
   payload.browser = detectBrowser();
   payload.browser_language = navigator.language; 
@@ -21,7 +20,7 @@ function sendData(full_endpoint, secret_key, payload, tracker, data) {
   })
   .then((response) => response.json())
   .then((response_json) => {
-    updateSessionInfo(full_endpoint, payload, tracker);
+    updateSessionInfo(full_endpoint, payload);
     if(data.enable_logs){console.log(response_json.response)}
     if (response_json.status_code === 200)
       return data.gtmOnSuccess()
@@ -32,7 +31,6 @@ function sendData(full_endpoint, secret_key, payload, tracker, data) {
     return data.gtmOnFailure()
   })
 }
-
 
 function detectBrowser(){
   let userAgent = navigator.userAgent;
@@ -54,7 +52,6 @@ function detectBrowser(){
   return browserName;
 }
 
-
 function detectDevice(){
   let userAgent = navigator.userAgent;
   if (/(tablet|ipad|playbook|silk)|(android(?!.*mobi))/i.test(userAgent)) {
@@ -64,6 +61,18 @@ function detectDevice(){
     return "Mobile";
   }
   return "Desktop";
+}
+
+
+// Add event listener for session end
+function sessionEndListener(full_endpoint, secret_key, data){
+  if(getEventListeners(window).beforeunload.find(e => e.listener.name) === 'sessionEnd'){
+    console.log("Listener già presente")
+  } else {  
+    window.addEventListener("beforeunload", function sessionEnd() {
+      console.log(full_endpoint + secret_key + payload + data)
+    })
+  }
 }
 
 
@@ -115,7 +124,7 @@ function setSessionInfo(user_info){
 }
 
 // Event data
-function updateSessionInfo(full_endpoint, payload, tracker){  
+function updateSessionInfo(full_endpoint, payload){  
   var actual_session_info = JSON.parse(sessionStorage.getItem("session_info"));
   actual_session_info.total_requests = actual_session_info.total_requests + 1 
   sessionStorage.setItem("session_info", JSON.stringify(actual_session_info));
