@@ -21,7 +21,6 @@ function sendData(full_endpoint, secret_key, payload, data) {
   .then((response) => response.json())
   .then((response_json) => {
     updateSessionInfo(full_endpoint, payload);
-    // addSessionEndListener(full_endpoint, secret_key, data);
     if(data.enable_logs){console.log(response_json.response)}
     if (response_json.status_code === 200)
       return data.gtmOnSuccess()
@@ -70,9 +69,30 @@ function addSessionEndListener(full_endpoint, secret_key, data){
   var payload = {
     a: 1234,
     b: "abcd"
-  }  
-  window.addEventListener("beforeunload", function sessionEnd(){
-    console.log(full_endpoint, secret_key, payload, data)
+  }
+    
+  window.addEventListener("beforeunload", () => {
+    payload.user_agent = navigator.userAgent;
+    payload.browser = detectBrowser();
+    payload.browser_language = navigator.language; 
+    payload.device = detectDevice();
+        
+    fetch(full_endpoint, {
+      // headers: new Headers({
+      //   'Authorization': 'Bearer ' + btoa('secret_key'),
+      //   'Content-Type': 'application/json'
+      // }),
+      method: 'POST',
+      credentials: 'include',
+      mode: 'cors',
+      body: JSON.stringify(payload)
+    })
+    .then(() => {
+        console.log("Unloaded")
+    })
+    .catch((error) => {
+      console.log(error)
+    })
   })
   return true
 }
