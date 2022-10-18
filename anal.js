@@ -5,7 +5,6 @@ function sendData(full_endpoint, secret_key, payload, tracker, data) {
   payload.browser = detectBrowser();
   payload.browser_language = navigator.language; 
   payload.device = detectDevice();
-  payload.platform = detectPlatform();
   
   if(data.enable_logs){console.log('👉 Request payload:', payload);}
   if(data.enable_logs){console.log('🟢 Analytics consent granted. Sending request...');}
@@ -67,10 +66,6 @@ function detectDevice(){
   return "Desktop";
 }
 
-
-function detectPlatform(){
-  return null
-}
 
 // --------------------------------------------------------------------------------------------------------------------------------------------------------
   
