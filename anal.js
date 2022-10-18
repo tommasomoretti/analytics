@@ -80,11 +80,12 @@ function setUserInfo(){
   if (localStorage.getItem("user_info") === null){
     sessionStorage.removeItem('session_info');
     sessionStorage.removeItem('event_info');
+    var timestamp = Date.now();
     var client_id = Math.floor(Math.random() * Math.pow(10, 10));
     var user_info = {
       client_id: client_id,
       user_source: document.referrer || window.location.protocol + "//" + window.location.host,
-      usert_timestamp: Date.now(),
+      usert_timestamp: timestamp,
       total_sessions: 0
     }
     localStorage.setItem("user_info", JSON.stringify(user_info));
@@ -109,7 +110,7 @@ function setSessionInfo(user_info){
     var session_info = {
       session_id: session_id,
       session_source: document.referrer || window.location.protocol + "//" + window.location.host,
-      session_timestamp: Date.now(),
+      session_timestamp: user_info.timestamp,
       total_requests: 0
     }
     sessionStorage.setItem("session_info", JSON.stringify(session_info));
