@@ -6,7 +6,7 @@ function sendData(full_endpoint, secret_key, payload, tracker, data) {
   payload.device = detectDevice();
   payload.platform = detectOS();
   
-  if(data.enable_logs){console.log('👉 Request payload: ', payload);}
+  if(data.enable_logs){console.log('👉 Request payload:', payload);}
   if(data.enable_logs){console.log('🟢 Analytics consent granted. Sending request...');}
 
   fetch(full_endpoint, {
