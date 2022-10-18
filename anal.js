@@ -66,6 +66,7 @@ function detectDevice(){
 
 // Add event listener for session end
 function sessionEndListener(full_endpoint, secret_key, data){
+  console.log("DIOCAN");
   if(getEventListeners(window).beforeunload.find(e => e.listener.name == 'sessionEnd')){
     console.log("Listener già presente")
   } else {
