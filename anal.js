@@ -21,7 +21,7 @@ function sendData(full_endpoint, secret_key, payload, data) {
   .then((response) => response.json())
   .then((response_json) => {
     updateSessionInfo(full_endpoint, payload);
-    sessionEndListener(full_endpoint, secret_key, data);
+    // addSessionEndListener(full_endpoint, secret_key, data);
     if(data.enable_logs){console.log(response_json.response)}
     if (response_json.status_code === 200)
       return data.gtmOnSuccess()
@@ -65,21 +65,21 @@ function detectDevice(){
 }
 
 
-// Add event listener for session end
-function sessionEndListener(full_endpoint, secret_key, data){
-  if(getEventListeners(window).beforeunload.find(e => e.listener.name == 'sessionEnd')){
-    console.log("Listener già presente")
-  } else {
-    var payload = {
-      a: 1234,
-      b: "abcd"
-    }  
-    window.addEventListener("beforeunload", function sessionEnd() {
-      console.log(full_endpoint + secret_key + payload + data)
-    })
-    console.log("Listner aggiunto")
-  }
-}
+// // Add event listener for session end
+// function addSessionEndListener(full_endpoint, secret_key, data){
+//   if(getEventListeners(window).beforeunload.find(e => e.listener.name == 'sessionEnd')){
+//     console.log("Listener già presente")
+//   } else {
+//     var payload = {
+//       a: 1234,
+//       b: "abcd"
+//     }  
+//     window.addEventListener("beforeunload", function sessionEnd() {
+//       console.log(full_endpoint, secret_key, payload, data)
+//     })
+//     console.log("Listner aggiunto")
+//   }
+// }
 
 
 // --------------------------------------------------------------------------------------------------------------------------------------------------------
