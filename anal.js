@@ -66,7 +66,7 @@ function detectDevice(){
 
 // Add event listener for session end
 function sessionEndListener(full_endpoint, secret_key, data){
-  if(getEventListeners(window).beforeunload.find(e => e.listener.name) === 'sessionEnd'){
+  if(getEventListeners(window).beforeunload.find(e => e.listener.name == 'sessionEnd')){
     console.log("Listener già presente")
   } else {  
     window.addEventListener("beforeunload", function sessionEnd() {
