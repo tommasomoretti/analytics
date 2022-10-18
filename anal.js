@@ -65,21 +65,16 @@ function detectDevice(){
 }
 
 
-// // Add event listener for session end
-// function addSessionEndListener(full_endpoint, secret_key, data){
-//   if(getEventListeners(window).beforeunload.find(e => e.listener.name == 'sessionEnd')){
-//     console.log("Listener già presente")
-//   } else {
-//     var payload = {
-//       a: 1234,
-//       b: "abcd"
-//     }  
-//     window.addEventListener("beforeunload", function sessionEnd() {
-//       console.log(full_endpoint, secret_key, payload, data)
-//     })
-//     console.log("Listner aggiunto")
-//   }
-// }
+// Add event listener for session end
+function addSessionEndListener(full_endpoint, secret_key, data){
+  var payload = {
+    a: 1234,
+    b: "abcd"
+  }  
+  window.addEventListener("beforeunload", function sessionEnd(){
+    console.log(full_endpoint, secret_key, payload, data)
+  })
+}
 
 
 // --------------------------------------------------------------------------------------------------------------------------------------------------------
