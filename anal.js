@@ -3,6 +3,7 @@
 function sendData(full_endpoint, secret_key, payload, tracker, data) {
   payload.user_agent = navigator.userAgent;
   payload.browser = detectBrowser();
+  payload.browser_language = navigator.language; 
   payload.device = detectDevice();
   payload.platform = detectOS();
   
