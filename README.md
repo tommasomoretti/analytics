@@ -1,6 +1,6 @@
 # TO DO:
 
-## Crossdomain tracking
+## Cross domain tracking
 Broadcast Channel API
 The Broadcast Channel API allows communication between Tabs, Windows, Frames, Iframes, and Web Workers. One Tab can create and post to a channel as follows.
 
