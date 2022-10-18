@@ -15,6 +15,10 @@ channel.addEventListener ('message', (event) => {
 This way, Browser contexts (Windows, Tabs, Frames, or Iframes) can communicate. Even though this is a convenient way of communication between Browser Tabs, safari and IE does not support this. You can find more details in MDN documentation for BroadcastChannel.
 
 
+## Cross tab session storage
+Copiare il session storage tra tab
+
+
 ## Timing data su page_info
 Time to DOM Interactive
 <pre><code>console.log(performance.timing.responseStart)</pre></code>
@@ -36,6 +40,7 @@ Event listener
 
 ## Session start event
 Quando crea il sessionStorage con i dati della sessione
+
 
 ## Session end event
 Event listener
