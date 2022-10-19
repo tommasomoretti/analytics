@@ -70,12 +70,12 @@ function addSessionEndListener(full_endpoint, secret_key, data){
     a: 1234,
     b: "abcd"
   }
-  
-  var eventHandler = (full_endpoint, payload) => {
-    // payload.user_agent = navigator.userAgent;
-    // payload.browser = detectBrowser();
-    // payload.browser_language = navigator.language; 
-    // payload.device = detectDevice();
+      
+  window.addEventListener("beforeunload", (full_endpoint, payload) => {
+    payload.user_agent = navigator.userAgent;
+    payload.browser = detectBrowser();
+    payload.browser_language = navigator.language; 
+    payload.device = detectDevice();
       
     fetch(full_endpoint, {
       // headers: new Headers({
@@ -89,14 +89,13 @@ function addSessionEndListener(full_endpoint, secret_key, data){
     })
     .then(() => {
       console.log("Session end")
+      return true
     })
     .catch((error) => {
       console.log(error)
+      return true
     })
-  }
-    
-  window.addEventListener("beforeunload", eventHandler(full_endpoint, payload), true)
-  return true
+  })
 }
 
 
