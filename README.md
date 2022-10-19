@@ -19,11 +19,7 @@ This way, Browser contexts (Windows, Tabs, Frames, or Iframes) can communicate. 
 Copiare il session storage tra tab
 
 
-## Session start event
-Quando crea il sessionStorage con i dati della sessione
-
-
-## Session end event
+## Before unload event
 Event listener
 <pre><code>window.addEventListener('beforeunload', (event) => {
   // Send timing data
