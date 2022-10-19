@@ -99,7 +99,6 @@ function addSessionEndListener(full_endpoint, secret_key){
   }
       
   window.addEventListener("beforeunload", pageChange)
-  )
 }
 
 
