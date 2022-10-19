@@ -70,13 +70,13 @@ function addSessionEndListener(full_endpoint, secret_key, data){
     a: 1234,
     b: "abcd"
   }
+  
+  payload.user_agent = navigator.userAgent;
+  payload.browser = detectBrowser();
+  payload.browser_language = navigator.language; 
+  payload.device = detectDevice();
       
-  window.addEventListener("beforeunload", (full_endpoint, payload) => {
-    payload.user_agent = navigator.userAgent;
-    payload.browser = detectBrowser();
-    payload.browser_language = navigator.language; 
-    payload.device = detectDevice();
-      
+  window.addEventListener("beforeunload", (full_endpoint, payload) => {      
     fetch(full_endpoint, {
       // headers: new Headers({
       //   'Authorization': 'Bearer ' + btoa('secret_key'),
