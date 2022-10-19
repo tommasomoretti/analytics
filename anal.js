@@ -70,8 +70,8 @@ function addSessionEndListener(full_endpoint, secret_key){
     a: 1234,
     b: "abcd"
   }
-      
-  window.addEventListener("beforeunload", function sessionEnd(){
+
+  var pageChange = () => {
     payload.user_agent = navigator.userAgent;
     payload.browser = detectBrowser();
     payload.browser_language = navigator.language; 
@@ -96,12 +96,16 @@ function addSessionEndListener(full_endpoint, secret_key){
     .catch((error) => {
       console.log(error)
     })
-  })
+  }
+      
+  window.addEventListener("beforeunload", pageChange)
+  )
 }
 
 
 // --------------------------------------------------------------------------------------------------------------------------------------------------------
-  
+
+
 // User data
 function setUserInfo(){
   info = [];
