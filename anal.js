@@ -89,13 +89,12 @@ function addSessionEndListener(full_endpoint, secret_key, data){
     })
     .then((response) => {
       console.log("Page changed.")
-      return true
     })
     .catch((error) => {
       console.log(error)
-      return true
     })
   })
+  return true
 }
 
 
