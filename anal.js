@@ -71,7 +71,7 @@ function addSessionEndListener(full_endpoint, secret_key){
     b: "abcd"
   }
       
-  window.addEventListener("beforeunload", (event) => {
+  window.addEventListener("beforeunload", function sessionEnd(){
     payload.user_agent = navigator.userAgent;
     payload.browser = detectBrowser();
     payload.browser_language = navigator.language; 
