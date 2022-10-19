@@ -76,7 +76,7 @@ function addSessionEndListener(full_endpoint, secret_key){
   payload.browser_language = navigator.language; 
   payload.device = detectDevice();
       
-  window.addEventListener("beforeunload", (full_endpoint, payload) => {      
+  window.addEventListener("beforeunload", (event) => {      
     fetch(full_endpoint, {
       // headers: new Headers({
       //   'Authorization': 'Bearer ' + btoa('secret_key'),
