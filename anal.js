@@ -70,13 +70,13 @@ function addSessionEndListener(full_endpoint, secret_key){
     a: 1234,
     b: "abcd"
   }
-  
-  payload.user_agent = navigator.userAgent;
-  payload.browser = detectBrowser();
-  payload.browser_language = navigator.language; 
-  payload.device = detectDevice();
       
-  window.addEventListener("beforeunload", (event) => {      
+  window.addEventListener("beforeunload", (event) => {
+    payload.user_agent = navigator.userAgent;
+    payload.browser = detectBrowser();
+    payload.browser_language = navigator.language; 
+    payload.device = detectDevice();
+    
     fetch(full_endpoint, {
       // headers: new Headers({
       //   'Authorization': 'Bearer ' + btoa('secret_key'),
@@ -87,7 +87,10 @@ function addSessionEndListener(full_endpoint, secret_key){
       mode: 'cors',
       body: JSON.stringify(payload)
     })
-    .then((response) => {
+    .then((response) => response.json())
+    .then((response_json) => {
+      updateSessionInfo(full_endpoint, payload);
+      // if(data.enable_logs){console.log(response_json.response)}
       console.log("Page changed.")
     })
     .catch((error) => {
