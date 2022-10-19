@@ -77,9 +77,6 @@ function addSessionEndListener(full_endpoint, secret_key, data){
     // payload.browser_language = navigator.language; 
     // payload.device = detectDevice();
       
-    console.log(full_endpoint);
-    console.log(payload);
-      
     fetch(full_endpoint, {
       // headers: new Headers({
       //   'Authorization': 'Bearer ' + btoa('secret_key'),
@@ -91,7 +88,7 @@ function addSessionEndListener(full_endpoint, secret_key, data){
       body: JSON.stringify(payload)
     })
     .then(() => {
-      console.log("Unloaded")
+      console.log("Session end")
     })
     .catch((error) => {
       console.log(error)
