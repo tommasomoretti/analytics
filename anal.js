@@ -87,8 +87,8 @@ function addSessionEndListener(full_endpoint, secret_key, data){
       mode: 'cors',
       body: JSON.stringify(payload)
     })
-    .then(() => {
-      console.log("Session end")
+    .then((response) => {
+      console.log("Page changed.")
       return true
     })
     .catch((error) => {
