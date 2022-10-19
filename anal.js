@@ -94,7 +94,6 @@ function addSessionEndListener(full_endpoint, secret_key, data){
       console.log(error)
     })
   })
-  return true
 }
 
 
