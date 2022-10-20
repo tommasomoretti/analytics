@@ -68,10 +68,10 @@ function detectDevice(){
 function addSessionEndListener(full_endpoint, secret_key){  
   var payload = {
     event_name: 'page_changed',
-    user_data: {},
-    session_data: {},
-    page_data: {},
-    event_data: {}
+    user_data: {client_id: 1234},
+    session_data: {session_id: "1234_4567"},
+    page_data: {page_location: "/"},
+    event_data: {event_timestamp: '1234567890123'}
   }
 
   var pageChange = () => {
