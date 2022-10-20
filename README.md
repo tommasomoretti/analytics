@@ -16,11 +16,8 @@ This way, Browser contexts (Windows, Tabs, Frames, or Iframes) can communicate. 
 
 
 ## Cross tab session storage
-Copiare il session storage tra tab
+Copiare il session storage tra tab, vedi sopra
 
 
 ## Before unload event
-Event listener
-<pre><code>window.addEventListener('beforeunload', (event) => {
-  // Send timing data
-})</pre></code>
+add + remove
