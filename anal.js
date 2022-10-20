@@ -65,7 +65,7 @@ function detectDevice(){
 
 
 // Add event listener for session end
-function addSessionEndListener(full_endpoint, secret_key){  
+function addSessionEndListener(full_endpoint, mode,secret_key){  
   var payload = {
     event_name: 'page_changed',
     user_data: {client_id: 1234},
@@ -100,8 +100,12 @@ function addSessionEndListener(full_endpoint, secret_key){
       console.log(error)
     })
   }
-      
-  window.addEventListener("beforeunload", pageChange)
+  
+  if (mode === 'add') { 
+    window.addEventListener("beforeunload", pageChange)
+  } else {
+    window.removeEventListener("beforeunload", pageChange)
+  }
 }
 
 
