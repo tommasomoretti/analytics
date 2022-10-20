@@ -103,7 +103,7 @@ function addSessionEndListener(full_endpoint, mode,secret_key){
   
   if (mode === 'add') { 
     addEventListener("beforeunload", pageChange)
-  } else (mode === 'remove') {
+  } else if (mode === 'remove') {
     removeEventListener("beforeunload", pageChange)
   }
 }
