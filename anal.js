@@ -4,6 +4,7 @@ function sendData(full_endpoint, secret_key, payload, data) {
   payload.browser = detectBrowser();
   payload.browser_language = navigator.language; 
   payload.device = detectDevice();
+  payload.screen_resolution = window.screen.width + 'x' + window.screen.height;
   
   if(data.enable_logs){console.log('👉 Request payload:', payload);}
   if(data.enable_logs){console.log('🟢 Analytics consent granted. Sending request...');}
