@@ -21,3 +21,8 @@ Copiare il session storage tra tab, vedi sopra
 
 ## Before unload event
 add + remove
+
+## Add main config with variable
+
+## 
+Add screen resolution in event params
