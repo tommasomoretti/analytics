@@ -24,5 +24,4 @@ add + remove
 
 ## Add main config with variable
 
-## 
-Add screen resolution in event params
+## Add screen resolution in event params
