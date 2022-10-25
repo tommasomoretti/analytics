@@ -103,10 +103,12 @@ function addPageClosedListener(full_endpoint, mode, secret_key){
   }
   
   if (mode === 'add') { 
-    addEventListener("beforeunload", page_closed, true)
+    window.addEventListener("beforeunload", page_closed, true)
+    console.log("Listner added")
   } else if (mode === 'remove') {
-    removeEventListener("beforeunload", page_closed, true)
-  }
+    window.removeEventListener("beforeunload", page_closed, true)
+    console.log("Listner removed")
+  } 
 }
 
 
