@@ -65,51 +65,51 @@ function detectDevice(){
 }
 
 
-// Add event listener for page closed
-function addPageClosedListener(full_endpoint, mode, secret_key){  
-  var payload = {
-    event_name: 'page_closed',
-    user_data: {client_id: 1234},
-    session_data: {session_id: "1234_4567"},
-    page_data: {page_location: "/"},
-    event_data: {event_timestamp: '1234567890123'}
-  }
-
-  function page_closed() {
-    payload.user_agent = navigator.userAgent;
-    payload.browser = detectBrowser();
-    payload.browser_language = navigator.language; 
-    payload.device = detectDevice();
-    
-    fetch(full_endpoint, {
-      // headers: new Headers({
-      //   'Authorization': 'Bearer ' + btoa('secret_key'),
-      //   'Content-Type': 'application/json'
-      // }),
-      method: 'POST',
-      credentials: 'include',
-      mode: 'cors',
-      body: JSON.stringify(payload)
-    })
-    .then((response) => response.json())
-    .then((response_json) => {
-      updateSessionInfo(full_endpoint, payload);
-      // if(data.enable_logs){console.log(response_json.response)}
-      console.log("Page closed.")
-    })
-    .catch((error) => {
-      console.log(error)
-    })
-  }
-  
-  if (mode === 'add') { 
-    window.addEventListener("beforeunload", page_closed, true)
-    console.log("Listner added")
-  } else if (mode === 'remove') {
-    window.removeEventListener("beforeunload", page_closed, true)
-    console.log("Listner removed")
-  } 
-}
+// // Add event listener for page closed
+// function addPageClosedListener(full_endpoint, mode, secret_key){  
+//   var payload = {
+//     event_name: 'page_closed',
+//     user_data: {client_id: 1234},
+//     session_data: {session_id: "1234_4567"},
+//     page_data: {page_location: "/"},
+//     event_data: {event_timestamp: '1234567890123'}
+//   }
+// 
+//   function page_closed() {
+//     payload.user_agent = navigator.userAgent;
+//     payload.browser = detectBrowser();
+//     payload.browser_language = navigator.language; 
+//     payload.device = detectDevice();
+//     
+//     fetch(full_endpoint, {
+//       // headers: new Headers({
+//       //   'Authorization': 'Bearer ' + btoa('secret_key'),
+//       //   'Content-Type': 'application/json'
+//       // }),
+//       method: 'POST',
+//       credentials: 'include',
+//       mode: 'cors',
+//       body: JSON.stringify(payload)
+//     })
+//     .then((response) => response.json())
+//     .then((response_json) => {
+//       updateSessionInfo(full_endpoint, payload);
+//       // if(data.enable_logs){console.log(response_json.response)}
+//       console.log("Page closed.")
+//     })
+//     .catch((error) => {
+//       console.log(error)
+//     })
+//   }
+//   
+//   if (mode === 'add') { 
+//     window.addEventListener("beforeunload", page_closed, true)
+//     console.log("Listner added")
+//   } else if (mode === 'remove') {
+//     window.removeEventListener("beforeunload", page_closed, true)
+//     console.log("Listner removed")
+//   } 
+// }
 
 
 // --------------------------------------------------------------------------------------------------------------------------------------------------------
