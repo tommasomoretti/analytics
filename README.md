@@ -20,4 +20,7 @@ Copiare il session storage tra tab, vedi sopra
 
 
 ## Before unload event
-add + remove
+Remove event when consent is denied
+
+## Secret token
+Add secret token with preflight requests
