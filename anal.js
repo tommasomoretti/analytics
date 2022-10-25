@@ -10,10 +10,10 @@ function sendData(full_endpoint, secret_key, payload, data) {
   if(data.enable_logs){console.log('🟢 Analytics consent granted. Sending request...');}
 
   fetch(full_endpoint, {
-    headers: new Headers({
-      'Authorization': 'Bearer ' + btoa('secret_key'),
-      'Content-Type': 'application/json'
-    }),
+    // headers: new Headers({
+    //   'Authorization': 'Bearer ' + btoa('secret_key'),
+    //   'Content-Type': 'application/json'
+    // }),
     method: 'POST',
     credentials: 'include',
     mode: 'cors',
