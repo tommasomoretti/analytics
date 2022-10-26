@@ -1,5 +1,8 @@
 // Send hits
 function sendData(full_endpoint, secret_key, payload, data) {
+  payload.session_data.total_requests = payload.session_data.total_requests + 1;
+  payload.event_data.request_number = payload.event_data.request_number + 1;
+  
   payload.user_agent = navigator.userAgent;
   payload.browser = detectBrowser();
   payload.browser_language = navigator.language; 
