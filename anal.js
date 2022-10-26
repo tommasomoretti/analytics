@@ -18,8 +18,8 @@ function sendData(full_endpoint, secret_key, payload, data) {
     //   'Authorization': 'Bearer ' + btoa('secret_key')
     // }),
     method: 'POST',
-    // credentials: 'include',
-    // mode: 'cors',
+    credentials: 'include',
+    mode: 'cors',
     body: JSON.stringify(payload)
   })
   .then((response) => response.json())
