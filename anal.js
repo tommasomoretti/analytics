@@ -84,7 +84,6 @@ function page_closed() {
   })
   .then(() => {
     updateSessionInfo(full_endpoint, payload);
-    console.log("Page closed.")
   })
   .catch((error) => {
     console.log(error)
@@ -102,10 +101,8 @@ function addPageClosedListener(full_endpoint, mode, secret_key){
   
   if (mode === 'add') { 
     window.addEventListener("beforeunload", page_closed, true)
-    console.log("Listner added")
   } else if (mode === 'remove') {
     window.removeEventListener("beforeunload", page_closed, true)
-    console.log("Listner removed")
   } 
 }
 
