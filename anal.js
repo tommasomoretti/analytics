@@ -19,7 +19,7 @@ function sendData(full_endpoint, secret_key, payload, data) {
     // }),
     method: 'POST',
     credentials: 'include',
-    mode: 'cors',
+    // mode: 'cors',
     body: JSON.stringify(payload)
   })
   .then((response) => response.json())
