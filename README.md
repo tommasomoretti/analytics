@@ -19,8 +19,5 @@ This way, Browser contexts (Windows, Tabs, Frames, or Iframes) can communicate. 
 Copiare il session storage tra tab, vedi sopra
 
 
-## Before unload event
-Remove event when consent is denied
-
 ## Secret token
 Add secret token with preflight requests
