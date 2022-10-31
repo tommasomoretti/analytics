@@ -1,8 +1,5 @@
 // Send hits
-function sendData(full_endpoint, secret_key, payload, data) {
-  payload.session_data.total_requests = payload.session_data.total_requests + 1;
-  payload.event_data.event_number = payload.event_data.event_number + 1;
-  
+function sendData(full_endpoint, secret_key, payload, data) {  
   payload.user_agent = navigator.userAgent;
   payload.browser = detectBrowser();
   payload.browser_language = navigator.language; 
@@ -13,13 +10,8 @@ function sendData(full_endpoint, secret_key, payload, data) {
   if(data.enable_logs){console.log('🟢 Analytics consent granted. Sending request...');}
 
   fetch(full_endpoint, {
-    // headers: new Headers({
-    //   'Content-type': 'application/json',
-    //   'Authorization': 'Bearer ' + btoa('secret_key')
-    // }),
     method: 'POST',
     credentials: 'include',
-    // mode: 'cors',
     body: JSON.stringify(payload)
   })
   .then((response) => response.json())
@@ -76,13 +68,8 @@ function page_closed() {
   payload.device = detectDevice();
   
   fetch(full_endpoint, {
-    // headers: new Headers({
-    //   'Authorization': 'Bearer ' + btoa('secret_key'),
-    //   'Content-Type': 'application/json'
-    // }),
     method: 'POST',
     credentials: 'include',
-    mode: 'cors',
     body: JSON.stringify(payload)
   })
   .then(() => {
