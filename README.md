@@ -17,7 +17,3 @@ This way, Browser contexts (Windows, Tabs, Frames, or Iframes) can communicate. 
 
 ## Cross tab session storage
 Copiare il session storage tra tab, vedi sopra
-
-
-## Secret token
-Add secret token with preflight requests
