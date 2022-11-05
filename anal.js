@@ -60,6 +60,9 @@ function detectDevice(){
 }
 
 
+// --------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
 // Add event listener for page closed
 function page_closed() {
   payload.user_agent = navigator.userAgent;
