@@ -66,6 +66,7 @@ function page_closed() {
   payload.browser = detectBrowser();
   payload.browser_language = navigator.language; 
   payload.device = detectDevice();
+  payload.screen_resolution = window.screen.width + 'x' + window.screen.height;
   
   fetch(full_endpoint, {
     method: 'POST',
