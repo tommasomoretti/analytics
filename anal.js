@@ -16,7 +16,6 @@ function sendData(full_endpoint, secret_key, payload, data) {
   })
   .then((response) => response.json())
   .then((response_json) => {
-    updateSessionInfo(full_endpoint, payload);
     if(data.enable_logs){console.log(response_json.response)}
     if (response_json.status_code === 200)
       return data.gtmOnSuccess()
@@ -77,7 +76,6 @@ function page_closed() {
     body: JSON.stringify(payload)
   })
   .then(() => {
-    updateSessionInfo(full_endpoint, payload);
   })
   .catch((error) => {
     console.log(error)
