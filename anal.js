@@ -63,12 +63,19 @@ function detectDevice(){
 
 
 // Add event listener for page closed
-function page_closed(payload) {
-  payload.user_agent = navigator.userAgent;
-  payload.browser = detectBrowser();
-  payload.browser_language = navigator.language; 
-  payload.device = detectDevice();
-  payload.screen_resolution = window.screen.width + 'x' + window.screen.height;
+function page_closed() {
+  var payload = {
+    event_name: 'page_closed',
+    user_data: {client_id: 1234},
+    session_data: {session_id: "1234_4567"},
+    page_data: {page_location: "/"},
+    event_data: {event_timestamp: '1234567890123'},
+    user_agent: navigator.userAgent,
+    browser: detectBrowser(),
+    browser_language: navigator.language, 
+    device: detectDevice(),
+    screen_resolution: window.screen.width + 'x' + window.screen.height
+  }
   
   fetch(full_endpoint, {
     method: 'POST',
@@ -83,17 +90,9 @@ function page_closed(payload) {
 }
 
 function addPageClosedListener(full_endpoint, mode, secret_key){  
-  var payload = {
-    event_name: 'page_closed',
-    user_data: {client_id: 1234},
-    session_data: {session_id: "1234_4567"},
-    page_data: {page_location: "/"},
-    event_data: {event_timestamp: '1234567890123'}
-  }
-  
   if (mode === 'add') { 
-    window.addEventListener("beforeunload", page_closed(payload), true)
+    window.addEventListener("beforeunload", page_closed, true)
   } else if (mode === 'remove') {
-    window.removeEventListener("beforeunload", page_closed(payload), true)
+    window.removeEventListener("beforeunload", page_closed, true)
   } 
 }
