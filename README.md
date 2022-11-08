@@ -1,19 +1,23 @@
-# TO DO:
+# TM Analytics
+Funzionalità:
+
+## Consent mode integrato
+I tag partono solo se il consenso è accettato. Se non è stato espresso o se è negato i tag restano in attesa del consenso e partiranno retroattivamente solo se viene accettato. Questa logica vale a livello di pagina, non di sessione.
+
+## Cookies
+
+I cookie che vengono salvati sono 2:
+- cookie utente: nome standard _user_info
+  - client_id: id randomico del client
+  - total_sessions: numero totale di sessioni
+  - user_source: sorgente di prima acquisizione dell'utente
+  - user_timestamp: timestamp di prima acquisizione dell'utente
+- cookie sessione: nome standard _session_info
+  - session_id: client_id + id randomico
+  - total_requests: numero totale di richieste
+  - session_source: sorgente di origine della sessione
+  - session_timestamp: timestamp di inizio della sessione
+  
+I cookie possono essere rinominati a piacere. 
 
 ## Cross domain tracking
-Broadcast Channel API
-The Broadcast Channel API allows communication between Tabs, Windows, Frames, Iframes, and Web Workers. One Tab can create and post to a channel as follows.
-
-const channel = new BroadcastChannel('app-data');
-channel.postMessage(data);
-And other Tabs can listen to channel as follows.
-
-const channel = new BroadcastChannel('app-data');
-channel.addEventListener ('message', (event) => {
- console.log(event.data);
-});
-This way, Browser contexts (Windows, Tabs, Frames, or Iframes) can communicate. Even though this is a convenient way of communication between Browser Tabs, safari and IE does not support this. You can find more details in MDN documentation for BroadcastChannel.
-
-
-## Cross tab session storage
-Copiare il session storage tra tab, vedi sopra
