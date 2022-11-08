@@ -63,7 +63,7 @@ function detectDevice(){
 
 
 // Add event listener for page closed
-function page_closed() {
+function page_closed(payload) {
   payload.user_agent = navigator.userAgent;
   payload.browser = detectBrowser();
   payload.browser_language = navigator.language; 
@@ -92,8 +92,8 @@ function addPageClosedListener(full_endpoint, mode, secret_key){
   }
   
   if (mode === 'add') { 
-    window.addEventListener("beforeunload", page_closed, true)
+    window.addEventListener("beforeunload", page_closed(payload), true)
   } else if (mode === 'remove') {
-    window.removeEventListener("beforeunload", page_closed, true)
+    window.removeEventListener("beforeunload", page_closed(payload), true)
   } 
 }
