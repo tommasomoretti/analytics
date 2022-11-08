@@ -7,12 +7,12 @@ I tag partono solo se il consenso è accettato. Se non è stato espresso o se è
 ## Cookies
 
 I cookie che vengono salvati sono 2:
-- cookie utente: nome standard _user_info
+### cookie utente: nome standard _user_info
   - client_id: id randomico del client
   - total_sessions: numero totale di sessioni
   - user_source: sorgente di prima acquisizione dell'utente
   - user_timestamp: timestamp di prima acquisizione dell'utente
-- cookie sessione: nome standard _session_info
+### cookie sessione: nome standard _session_info
   - session_id: client_id + id randomico
   - total_requests: numero totale di richieste
   - session_source: sorgente di origine della sessione
