@@ -90,7 +90,7 @@ function page_closed(full_endpoint) {
 }
 
 function addPageClosedListener(full_endpoint, mode, secret_key){  
-  if (mode === 'add') { 
+  if (mode === 'add') { 
     window.addEventListener("beforeunload", page_closed(full_endpoint), true)
   } else if (mode === 'remove') {
     window.removeEventListener("beforeunload", page_closed(full_endpoint), true)
