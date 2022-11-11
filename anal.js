@@ -89,10 +89,11 @@ function page_closed(full_endpoint) {
   })
 }
 
-function addPageClosedListener(full_endpoint, mode, secret_key){  
+function addPageClosedListener(full_endpoint, mode, secret_key){
+  var full_endpoint = full_endpoint;
   if (mode === 'add') { 
-    window.addEventListener("beforeunload", page_closed(full_endpoint), true)
+    window.addEventListener("beforeunload", page_closed, true)
   } else if (mode === 'remove') {
-    window.removeEventListener("beforeunload", page_closed(full_endpoint), true)
+    window.removeEventListener("beforeunload", page_closed, true)
   } 
 }
