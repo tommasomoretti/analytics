@@ -63,7 +63,7 @@ function detectDevice(){
 
 
 // Add event listener for page closed
-function page_closed() {
+function page_closed(full_endpoint) {
   var payload = {
     event_name: 'page_closed',
     user_data: {client_id: 1234},
@@ -90,10 +90,9 @@ function page_closed() {
 }
 
 function addPageClosedListener(full_endpoint, mode, secret_key){
-  var full_endpoint = full_endpoint;
   if (mode === 'add') { 
-    window.addEventListener("beforeunload", page_closed, true)
+    window.addEventListener("beforeunload", page_closed(full_endpoint), true)
   } else if (mode === 'remove') {
-    window.removeEventListener("beforeunload", page_closed, true)
+    window.removeEventListener("beforeunload", page_closed(full_endpoint), true)
   } 
 }
