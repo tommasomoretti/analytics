@@ -64,7 +64,7 @@ function detectDevice(){
 
 // Add event listener for page closed
 const page_closed = (full_endpoint) => {
-  return (event) => {
+  return () => {
     var payload = {
       event_name: 'page_closed',
       user_data: {client_id: 1234},
