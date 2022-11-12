@@ -91,8 +91,8 @@ const page_closed = (endpoint) => {
 
 function addPageClosedListener(full_endpoint, mode, secret_key){    
   if (mode === 'add') { 
-    window.addEventListener("beforeunload", page_closed(full_endpoint), true)
+    window.addEventListener("beforeunload", page_closed(full_endpoint))
   } else if (mode === 'remove') {
-    window.removeEventListener("beforeunload", page_closed(full_endpoint), true)
+    window.removeEventListener("beforeunload", page_closed(full_endpoint))
   } 
 }
