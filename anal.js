@@ -63,32 +63,30 @@ function detectDevice(){
 
 
 // Add event listener for page closed
-const page_closed = (full_endpoint) => {
-  return () => {
-    var payload = {
-      event_name: 'page_closed',
-      user_data: {client_id: 1234},
-      session_data: {session_id: "1234_4567"},
-      page_data: {page_location: "/"},
-      event_data: {event_timestamp: '1234567890123'},
-      user_agent: navigator.userAgent,
-      browser: detectBrowser(),
-      browser_language: navigator.language,
-      device: detectDevice(),
-      screen_resolution: window.screen.width + 'x' + window.screen.height
-    }
-  
-    fetch(full_endpoint, {
-      method: 'POST',
-      credentials: 'include',
-      body: JSON.stringify(payload)
-    })
-    .then(() => {
-    })
-    .catch((error) => {
-      console.log(error)
-    })
+var page_closed = (full_endpoint) => {
+  var payload = {
+    event_name: 'page_closed',
+    user_data: {client_id: 1234},
+    session_data: {session_id: "1234_4567"},
+    page_data: {page_location: "/"},
+    event_data: {event_timestamp: '1234567890123'},
+    user_agent: navigator.userAgent,
+    browser: detectBrowser(),
+    browser_language: navigator.language,
+    device: detectDevice(),
+    screen_resolution: window.screen.width + 'x' + window.screen.height
   }
+  
+  fetch(full_endpoint, {
+    method: 'POST',
+    credentials: 'include',
+    body: JSON.stringify(payload)
+  })
+  .then(() => {
+  })
+  .catch((error) => {
+    console.log(error)
+  })
 }
 
 function addPageClosedListener(full_endpoint, mode, secret_key){    
